@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "org.launchcode.therapytracker"
+    },
+    "jhipsterVersion": "6.7.1",
+    "applicationType": "monolith",
+    "baseName": "therapytracker",
+    "packageName": "org.launchcode.therapytracker",
+    "packageFolder": "org/launchcode/therapytracker",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZGEzNDIwZjdkMGYwMmZjMzVjOWRjNDBlMzFmYTExNWMxMTRlODAzZGFkMjYzMWFjZGJkZjJjODA5OTlmZjcxMDE3NjExYjI0NGVkMTVjOTU3NmY5MTVhYzYyOWY0ZDk4N2RkYWQ5OGQwNmI4MTUzNjIxNjMzM2ExNTQ2NzE3NDQ=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "flatly",
+    "clientThemeVariant": "light",
+    "creationTimestamp": 1583816465113,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}
