@@ -1,0 +1,63 @@
+entity Patient {
+	firstName String required,
+    lastName String required,
+    birthDate LocalDate required,
+    reasonForTherapy String required,
+    affectedLocation AffectedLocation required,
+    homeStatus HomeStatus required,
+    activityLevel Integer required min(1) max(10),
+    stressLevel Integer required min(1) max(10),
+    mobility Integer required min(1) max(10),
+    notes String
+}
+
+entity Exercise {
+	name String required,
+    description String maxlength(150),
+    intensityLevel IntensityLevel required,
+    affectedLocation AffectedLocation required,
+    steps String required maxlength(1000),
+    itemsUsed String maxlength(100)
+}
+
+entity Appointment {
+	date LocalDate required,
+    notes String required maxlength(500),
+    progress Progress required
+}
+
+enum AffectedLocation {
+	HAND, SHOULDER, NECK, ELBOW, WRIST, TORSO
+}
+
+enum HomeStatus {
+	ALONE, SPOUSE, FAMILY
+}
+
+enum Progress {
+	IMPROVEMENT, SUSTAINED, REGRESSION
+}
+
+enum IntensityLevel {
+	LOW, MEDIUM, HIGH
+}
+
+relationship ManyToMany {
+	Appointment{exercises} to Exercise{appointments}
+}
+
+relationship OneToMany {
+	Patient{appointments} to Appointment
+}
+
+// Set pagination options
+paginate Patient, Exercise, Appointment with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+// service all with serviceImpl except Employee, Job
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

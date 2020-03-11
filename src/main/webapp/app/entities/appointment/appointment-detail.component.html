@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="appointment">
+            <h2><span>Appointment</span> {{ appointment.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Date</span></dt>
+                <dd>
+                    <span>{{ appointment.date }}</span>
+                </dd>
+                <dt><span>Notes</span></dt>
+                <dd>
+                    <span>{{ appointment.notes }}</span>
+                </dd>
+                <dt><span>Progress</span></dt>
+                <dd>
+                    <span>{{ appointment.progress }}</span>
+                </dd>
+                <dt><span>Exercises</span></dt>
+                <dd>
+                    <span *ngFor="let exercises of appointment.exercises; let last = last">
+                        <a [routerLink]="['/exercise', exercises?.id, 'view']">{{ exercises.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span>Patient</span></dt>
+                <dd>
+                    <div *ngIf="appointment.patientId">
+                        <a [routerLink]="['/patient', appointment.patientId, 'view']">{{ appointment.patientId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/appointment', appointment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

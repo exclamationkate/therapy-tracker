@@ -1,0 +1,189 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-patient-heading">Create or edit a Patient</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_firstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName" id="field_firstName"
+                           formControlName="firstName"/>
+                    <div *ngIf="editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('firstName')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastName">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" id="field_lastName"
+                           formControlName="lastName"/>
+                    <div *ngIf="editForm.get('lastName')!.invalid && (editForm.get('lastName')!.dirty || editForm.get('lastName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('lastName')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_birthDate">Birth Date</label>
+                    <div class="input-group">
+                        <input id="field_birthDate" type="text" class="form-control" name="birthDate" ngbDatepicker #birthDateDp="ngbDatepicker" formControlName="birthDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="birthDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('birthDate')!.invalid && (editForm.get('birthDate')!.dirty || editForm.get('birthDate')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('birthDate')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_reasonForTherapy">Reason For Therapy</label>
+                    <input type="text" class="form-control" name="reasonForTherapy" id="field_reasonForTherapy"
+                           formControlName="reasonForTherapy"/>
+                    <div *ngIf="editForm.get('reasonForTherapy')!.invalid && (editForm.get('reasonForTherapy')!.dirty || editForm.get('reasonForTherapy')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('reasonForTherapy')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_affectedLocation">Affected Location</label>
+                    <select class="form-control" name="affectedLocation" formControlName="affectedLocation" id="field_affectedLocation">
+                        <option value="HAND">HAND</option>
+                        <option value="SHOULDER">SHOULDER</option>
+                        <option value="NECK">NECK</option>
+                        <option value="ELBOW">ELBOW</option>
+                        <option value="WRIST">WRIST</option>
+                        <option value="TORSO">TORSO</option>
+                    </select>
+                    <div *ngIf="editForm.get('affectedLocation')!.invalid && (editForm.get('affectedLocation')!.dirty || editForm.get('affectedLocation')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('affectedLocation')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_homeStatus">Home Status</label>
+                    <select class="form-control" name="homeStatus" formControlName="homeStatus" id="field_homeStatus">
+                        <option value="ALONE">ALONE</option>
+                        <option value="SPOUSE">SPOUSE</option>
+                        <option value="FAMILY">FAMILY</option>
+                    </select>
+                    <div *ngIf="editForm.get('homeStatus')!.invalid && (editForm.get('homeStatus')!.dirty || editForm.get('homeStatus')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('homeStatus')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_activityLevel">Activity Level</label>
+                    <input type="number" class="form-control" name="activityLevel" id="field_activityLevel"
+                           formControlName="activityLevel"/>
+                    <div *ngIf="editForm.get('activityLevel')!.invalid && (editForm.get('activityLevel')!.dirty || editForm.get('activityLevel')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('activityLevel')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('activityLevel')?.errors?.min">
+                            This field should be at least 1.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('activityLevel')?.errors?.max">
+                            This field cannot be more than 10.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('activityLevel')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_stressLevel">Stress Level</label>
+                    <input type="number" class="form-control" name="stressLevel" id="field_stressLevel"
+                           formControlName="stressLevel"/>
+                    <div *ngIf="editForm.get('stressLevel')!.invalid && (editForm.get('stressLevel')!.dirty || editForm.get('stressLevel')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('stressLevel')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('stressLevel')?.errors?.min">
+                            This field should be at least 1.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('stressLevel')?.errors?.max">
+                            This field cannot be more than 10.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('stressLevel')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_mobility">Mobility</label>
+                    <input type="number" class="form-control" name="mobility" id="field_mobility"
+                           formControlName="mobility"/>
+                    <div *ngIf="editForm.get('mobility')!.invalid && (editForm.get('mobility')!.dirty || editForm.get('mobility')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('mobility')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('mobility')?.errors?.min">
+                            This field should be at least 1.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('mobility')?.errors?.max">
+                            This field cannot be more than 10.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('mobility')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_notes">Notes</label>
+                    <input type="text" class="form-control" name="notes" id="field_notes"
+                           formControlName="notes"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
