@@ -10,7 +10,7 @@
             <dl class="row-md jh-entity-details">
                 <dt><span>Date</span></dt>
                 <dd>
-                    <span>{{ appointment.date }}</span>
+                    <span>{{ appointment.date | date:'longDate' }}</span>
                 </dd>
                 <dt><span>Notes</span></dt>
                 <dd>
@@ -23,7 +23,7 @@
                 <dt><span>Exercises</span></dt>
                 <dd>
                     <span *ngFor="let exercises of appointment.exercises; let last = last">
-                        <a [routerLink]="['/exercise', exercises?.id, 'view']">{{ exercises.id }}</a>{{ last ? '' : ', ' }}
+                        <a [routerLink]="['/exercise', exercises?.id, 'view']">{{ exercises.name }}</a><br>
                     </span>
                 </dd>
                 <dt><span>Patient</span></dt>
