@@ -1,6 +1,10 @@
-# therapytracker
+# Therapy Tracker
 
-This application was generated using JHipster 6.7.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.7.1](https://www.jhipster.tech/documentation-archive/v6.7.1).
+Therapy Tracker is an application made specifically for Occupational Therapists to track patient progress and improvement through multiple appointments and exercises.
+
+This application was generated using JHipster 6.7.1 for my LC101 Capstone Project with LaunchCode - St. Louis.
+
+You can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.7.1](https://www.jhipster.tech/documentation-archive/v6.7.1).
 
 ## Development
 
