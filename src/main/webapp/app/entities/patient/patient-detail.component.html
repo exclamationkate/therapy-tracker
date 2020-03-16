@@ -1,24 +1,16 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="patient">
-            <h2><span>Patient</span> {{ patient.id }}</h2>
+            <h2><span>Patient Details for: </span> {{ patient.firstName }} {{ patient.lastName }}</h2>
 
             <hr>
 
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span>First Name</span></dt>
-                <dd>
-                    <span>{{ patient.firstName }}</span>
-                </dd>
-                <dt><span>Last Name</span></dt>
-                <dd>
-                    <span>{{ patient.lastName }}</span>
-                </dd>
                 <dt><span>Birth Date</span></dt>
                 <dd>
-                    <span>{{ patient.birthDate }}</span>
+                    <span>{{ patient.birthDate | date:'shortDate' }}</span>
                 </dd>
                 <dt><span>Reason For Therapy</span></dt>
                 <dd>
@@ -61,6 +53,10 @@
                     class="btn btn-primary">
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
             </button>
+
+            <hr>
+
+            <h3>Appointments</h3>
         </div>
     </div>
 </div>
