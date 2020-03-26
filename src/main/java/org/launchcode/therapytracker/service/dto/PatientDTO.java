@@ -3,6 +3,7 @@ package org.launchcode.therapytracker.service.dto;
 import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import org.launchcode.therapytracker.domain.enumeration.AffectedLocation;
 import org.launchcode.therapytracker.domain.enumeration.HomeStatus;
@@ -49,6 +50,7 @@ public class PatientDTO implements Serializable {
 
     private String notes;
 
+    private List<AppointmentDTO> appointments;
 
     public Long getId() {
         return id;
@@ -136,6 +138,14 @@ public class PatientDTO implements Serializable {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public List<AppointmentDTO> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<AppointmentDTO> appointments) {
+        this.appointments = appointments;
     }
 
     @Override

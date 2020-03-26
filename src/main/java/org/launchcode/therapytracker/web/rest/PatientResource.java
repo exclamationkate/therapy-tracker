@@ -1,6 +1,10 @@
 package org.launchcode.therapytracker.web.rest;
 
+import org.launchcode.therapytracker.domain.Appointment;
+import org.launchcode.therapytracker.repository.AppointmentRepository;
+import org.launchcode.therapytracker.service.AppointmentService;
 import org.launchcode.therapytracker.service.PatientService;
+import org.launchcode.therapytracker.service.dto.AppointmentDTO;
 import org.launchcode.therapytracker.web.rest.errors.BadRequestAlertException;
 import org.launchcode.therapytracker.service.dto.PatientDTO;
 
@@ -9,9 +13,11 @@ import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -39,6 +45,9 @@ public class PatientResource {
     private String applicationName;
 
     private final PatientService patientService;
+
+    @Autowired
+    private AppointmentService appointmentService;
 
     public PatientResource(PatientService patientService) {
         this.patientService = patientService;
@@ -108,6 +117,8 @@ public class PatientResource {
     public ResponseEntity<PatientDTO> getPatient(@PathVariable Long id) {
         log.debug("REST request to get Patient : {}", id);
         Optional<PatientDTO> patientDTO = patientService.findOne(id);
+        List<AppointmentDTO> appointments = appointmentService.findAll(id);
+        patientDTO.ifPresent(patient -> patient.setAppointments(appointments));
         return ResponseUtil.wrapOrNotFound(patientDTO);
     }
 
