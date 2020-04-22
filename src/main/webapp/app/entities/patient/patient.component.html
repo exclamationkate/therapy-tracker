@@ -25,8 +25,8 @@
                     <!--
                     <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
                     -->
-                    <th scope="col"  jhiSortBy="firstName"><span>First Name</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="lastName"><span>Last Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="firstName"><span>First Name</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="birthDate"><span>Birth Date</span> <fa-icon icon="sort"></fa-icon></th>
                     <!--
                     <th scope="col"  jhiSortBy="reasonForTherapy"><span>Reason For Therapy</span> <fa-icon icon="sort"></fa-icon></th>
@@ -45,8 +45,8 @@
                     <!--
                     <td><a [routerLink]="['/patient', patient.id, 'view']">{{ patient.id }}</a></td>
                     -->
-                    <td>{{ patient.firstName }}</td>
                     <td>{{ patient.lastName }}</td>
+                    <td>{{ patient.firstName }}</td>
                     <td>{{ patient.birthDate | date:'mediumDate' }}</td>
                     <!--
                     <td>{{ patient.reasonForTherapy }}</td>

@@ -22,25 +22,33 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <!--
                     <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    -->
                     <th scope="col"  jhiSortBy="name"><span>Name</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="description"><span>Description</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="intensityLevel"><span>Intensity Level</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="affectedLocation"><span>Affected Location</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--
                     <th scope="col"  jhiSortBy="steps"><span>Steps</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="itemsUsed"><span>Items Used</span> <fa-icon icon="sort"></fa-icon></th>
+                    -->
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let exercise of exercises ;trackBy: trackId">
+                    <!--
                     <td><a [routerLink]="['/exercise', exercise.id, 'view']">{{ exercise.id }}</a></td>
-                    <td>{{ exercise.name }}</td>
+                    -->
+                    <td><a [routerLink]="['/exercise', exercise.id, 'view']">{{ exercise.name }}</a></td>
                     <td>{{ exercise.description }}</td>
                     <td>{{ exercise.intensityLevel }}</td>
                     <td>{{ exercise.affectedLocation }}</td>
+                    <!--
                     <td>{{ exercise.steps }}</td>
                     <td>{{ exercise.itemsUsed }}</td>
+                    -->
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
