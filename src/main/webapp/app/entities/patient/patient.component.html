@@ -22,10 +22,13 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <!--
                     <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    -->
                     <th scope="col"  jhiSortBy="firstName"><span>First Name</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="lastName"><span>Last Name</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="birthDate"><span>Birth Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--
                     <th scope="col"  jhiSortBy="reasonForTherapy"><span>Reason For Therapy</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="affectedLocation"><span>Affected Location</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="homeStatus"><span>Home Status</span> <fa-icon icon="sort"></fa-icon></th>
@@ -33,15 +36,19 @@
                     <th scope="col"  jhiSortBy="stressLevel"><span>Stress Level</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="mobility"><span>Mobility</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="notes"><span>Notes</span> <fa-icon icon="sort"></fa-icon></th>
+                    -->
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let patient of patients ;trackBy: trackId">
+                    <!--
                     <td><a [routerLink]="['/patient', patient.id, 'view']">{{ patient.id }}</a></td>
+                    -->
                     <td>{{ patient.firstName }}</td>
                     <td>{{ patient.lastName }}</td>
                     <td>{{ patient.birthDate | date:'mediumDate' }}</td>
+                    <!--
                     <td>{{ patient.reasonForTherapy }}</td>
                     <td>{{ patient.affectedLocation }}</td>
                     <td>{{ patient.homeStatus }}</td>
@@ -49,6 +56,7 @@
                     <td>{{ patient.stressLevel }}</td>
                     <td>{{ patient.mobility }}</td>
                     <td>{{ patient.notes }}</td>
+                    -->
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
