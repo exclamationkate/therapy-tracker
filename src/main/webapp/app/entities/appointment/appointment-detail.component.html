@@ -1,17 +1,13 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="appointment">
-            <h2><span>Appointment</span> {{ appointment.id }}</h2>
+            <h2><span>Appointment on </span> {{ appointment.date | date:'shortDate' }}</h2>
 
             <hr>
 
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span>Date</span></dt>
-                <dd>
-                    <span>{{ appointment.date | date:'longDate' }}</span>
-                </dd>
                 <dt><span>Notes</span></dt>
                 <dd>
                     <span>{{ appointment.notes }}</span>
@@ -25,12 +21,6 @@
                     <span *ngFor="let exercises of appointment.exercises; let last = last">
                         <a [routerLink]="['/exercise', exercises?.id, 'view']">{{ exercises.name }}</a><br>
                     </span>
-                </dd>
-                <dt><span>Patient</span></dt>
-                <dd>
-                    <div *ngIf="appointment.patientId">
-                        <a [routerLink]="['/patient', appointment.patientId, 'view']">{{ appointment.patientId }}</a>
-                    </div>
                 </dd>
             </dl>
 

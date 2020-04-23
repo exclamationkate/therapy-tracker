@@ -68,7 +68,7 @@
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">{{ appointment.date | date:'shortDate' }}: {{appointment.progress }}</th>
+                            <th scope="col">{{ appointment.date | date:'shortDate' }}: {{appointment.progress }} <a [routerLink]="['/appointment', appointment.id, 'view']">(Click for more details.)</a></th>
                         </tr>
                     </thead>
                     <tbody>
