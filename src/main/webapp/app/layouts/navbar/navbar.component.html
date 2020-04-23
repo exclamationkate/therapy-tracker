@@ -3,10 +3,10 @@
         <span class="logo-img"></span>
         <span class="navbar-title">Therapy Tracker</span> <span class="navbar-version">{{ version }}</span>
     </a>
-    <a class="navbar-brand" routerLink="patient" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+    <a *jhiHasAnyAuthority="'ROLE_USER'" class="navbar-brand" routerLink="patient" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
         <span>Patients</span>
     </a>
-    <a class="navbar-brand" routerLink="exercise" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+    <a *jhiHasAnyAuthority="'ROLE_USER'" class="navbar-brand" routerLink="exercise" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
         <span>Exercises</span>
     </a>
     <a class="navbar-toggler d-lg-none" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
